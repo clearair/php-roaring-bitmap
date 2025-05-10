@@ -1,0 +1,24 @@
+[package]
+name = "php-roaring-bitmap"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+phper = "0.16.1"
+roaring = "0.10.6"
+
+[profile.release]
+strip = "debuginfo"
+# strip = "none"
+
+# [target.'cfg(not(target_os = "windows"))']
+# rustflags = ["-C", "link-arg=-Wl,-undefined,dynamic_lookup"]
+
+# [target.x86_64-pc-windows-msvc]
+# linker = "rust-lld"
+
+# [target.i686-pc-windows-msvc]
+# linker = "rust-lld"
