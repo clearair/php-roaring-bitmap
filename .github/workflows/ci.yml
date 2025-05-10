@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y php-cli php-dev php-pear
+      - name: Build release
+        run: cargo build --release
+      - name: Run Rust unit tests
+        run: cargo test --release
+      - name: Build PHP extension (shared lib)
+        run: |
+          mkdir -p php-ext
+          cp target/release/libphp_roaring_bitmap.so php-ext/
+      - name: Run PHP extension smoke test
+        run: |
+          echo '<?php echo "PHP extension loaded: ", extension_loaded("php_roaring_bitmap") ? "yes" : "no", "\n";' > smoke.php
+          php -d "extension=target/release/libphp_roaring_bitmap.so" smoke.php
+      - name: Run PHP functional tests (test.php)
+        run: |
+          php -d "extension=target/release/libphp_roaring_bitmap.so" test.php
