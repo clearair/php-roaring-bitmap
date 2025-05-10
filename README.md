@@ -23,11 +23,11 @@ cargo build --release
 ### Install
 Copy the compiled extension to your PHP extension dir:
 ```sh
-cp target/release/lib_roaring_bitmap.so $(php-config --extension-dir)
+cp target/release/libroaring_bitmap.so $(php-config --extension-dir)
 ```
 Add to your `php.ini`:
 ```
-extension=lib_roaring_bitmap.so
+extension=libroaring_bitmap.so
 ```
 
 ### Test
