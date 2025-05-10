@@ -27,7 +27,7 @@ cp target/release/libphp_roaring_bitmap.so $(php-config --extension-dir)
 ```
 Add to your `php.ini`:
 ```
-extension=php_roaring_bitmap.so
+extension=libphp_roaring_bitmap.so
 ```
 
 ### Test
