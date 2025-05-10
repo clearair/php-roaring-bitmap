@@ -24,11 +24,11 @@ jobs:
       - name: Build PHP extension (shared lib)
         run: |
           mkdir -p php-ext
-          cp target/release/libphp_roaring_bitmap.so php-ext/
+          cp target/release/libroaring_bitmap.so php-ext/
       - name: Run PHP extension smoke test
         run: |
-          echo '<?php echo "PHP extension loaded: ", extension_loaded("php_roaring_bitmap") ? "yes" : "no", "\n";' > smoke.php
-          php -d "extension=target/release/libphp_roaring_bitmap.so" smoke.php
+          echo '<?php echo "PHP extension loaded: ", extension_loaded("roaring_bitmap") ? "yes" : "no", "\n";' > smoke.php
+          php -d "extension=target/release/libroaring_bitmap.so" smoke.php
       - name: Run PHP functional tests (test.php)
         run: |
-          php -d "extension=target/release/libphp_roaring_bitmap.so" test.php
+          php -d "extension=target/release/libroaring_bitmap.so" test.php
