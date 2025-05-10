@@ -23,11 +23,11 @@ cargo build --release
 ### 安装
 将编译好的扩展复制到 PHP 扩展目录：
 ```sh
-cp target/release/libphp_roaring_bitmap.so $(php-config --extension-dir)
+cp target/release/lib_roaring_bitmap.so $(php-config --extension-dir)
 ```
 在 `php.ini` 里添加：
 ```
-extension=libphp_roaring_bitmap.so
+extension=lib_roaring_bitmap.so
 ```
 
 ### 测试

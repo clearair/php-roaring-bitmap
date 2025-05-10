@@ -105,7 +105,7 @@ impl AsMut<RoaringBitmap> for RoaringBitmapWrapper {
 #[php_get_module]
 pub fn get_module() -> Module {
     let mut module = Module::new(
-        "roaring_bitmap",
+        env!("CARGO_CRATE_NAME"),
         env!("CARGO_PKG_VERSION"),
         env!("CARGO_PKG_AUTHORS"),
     );

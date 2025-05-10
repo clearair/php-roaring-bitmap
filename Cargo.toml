@@ -5,6 +5,7 @@ edition = "2024"
 
 [lib]
 crate-type = ["cdylib"]
+name = "roaring_bitmap"
 
 [dependencies]
 phper = "0.16.1"
